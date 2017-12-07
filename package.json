@@ -1,0 +1,16 @@
+{
+  "name": "docker2cloudwatch",
+  "version": "0.1.0",
+  "description": "",
+  "main": "docker2cloudwatch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node docker2cloudwatch.js"
+  },
+  "author": "Karl Lam <karl.v.lam@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dockerode": "2.5.3",
+    "aws-sdk": "2.162.0"
+  }
+}
