@@ -17,7 +17,7 @@ log shipper from docker to cloudwatch
 export AWS_ACCESS_KEY_ID=aws-access-key-id
 export AWS_SECRET_ACCESS_KEY=aws-secret-access-key
 export LOG_REGION=ap-northeast-1
-export LOG_UNIQIE_ID='myloggroup'
+export LOG_UNIQUE_ID='myloggroup'
 node docker2cloudwatch
 ```
 ## Docker
