@@ -15,13 +15,14 @@ const LOG_LOCK_TIME = SEC * 60;
 const LOG_BATCH_SIZE = 500;
 
 const LOG_UNIQUE_ID= ENV['LOG_UNIQUE_ID'] || 'LOG_UNIQUE_ID';
+const LOG_REGION= ENV['LOG_REGION'] || null;
 
 const AWS = require('aws-sdk');
 const Docker = require('./lib/docker');
 const LogStream = require('./lib/logstream');
 const util = require('./lib/util');
 
-let theCwl = new AWS.CloudWatchLogs({region:'ap-northeast-1'});
+let theCwl = new AWS.CloudWatchLogs({ region:LOG_REGION });
 function log(message){
     console.log('[' + new Date().toISOString() + '] ' + message);
 }
