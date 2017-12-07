@@ -20,3 +20,6 @@ export LOG_REGION=ap-northeast-1
 export LOG_UNIQIE_ID='myloggroup'
 node docker2cloudwatch
 ```
+## Docker
+
+1. mount host docker socket file to  /var/run/docker.sock
