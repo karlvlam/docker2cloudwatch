@@ -14,6 +14,9 @@ const LOG_FLUSH_TIME = SEC * 5;
 const LOG_LOCK_TIME = SEC * 60;
 const LOG_BATCH_SIZE = 500;
 
+const METRIC_FLUSH_TIME = SEC * 5;
+const METRIC_UPDATE_TIME = SEC * 60;
+
 const LOG_UNIQUE_ID= ENV['LOG_UNIQUE_ID'] || 'LOG_UNIQUE_ID';
 const LOG_REGION= ENV['LOG_REGION'] || null;
 
@@ -21,6 +24,7 @@ const AWS = require('aws-sdk');
 const Docker = require('./lib/docker');
 const LogStream = require('./lib/logstream');
 const util = require('./lib/util');
+const metric = require('./lib/metric');
 
 let theCwl = new AWS.CloudWatchLogs({ region:LOG_REGION });
 function log(message){
@@ -45,6 +49,7 @@ let docker = new Docker(opt);
 
 
 let logPool = {};
+let metricList = [];
 
 async function newLogPool(id){
     let c = await docker.getContainer(id); 
@@ -93,11 +98,6 @@ async function flushLog(lp){
 
 }
 
-setInterval(function(){
-    Object.keys(logPool).map(function(id){
-        flushLog(logPool[id]);
-    });
-}, LOG_FLUSH_TIME);
 
 
 function _showLogPool(){
@@ -150,12 +150,25 @@ function removeLog(id){
 }
 
 
+async function metricCallBack(o) {
+    log(JSON.stringify(o,null,2));
+}
+
+
 async function main(){
     log(JSON.stringify(await docker.getContainers()));
 }
 
 main();
 
+setInterval(metric.logDockerStats, 5000, docker, metricCallBack);
+
+
+setInterval(function(){
+    Object.keys(logPool).map(function(id){
+        flushLog(logPool[id]);
+    });
+}, LOG_FLUSH_TIME);
 
 
 // run GC every 10 min 
