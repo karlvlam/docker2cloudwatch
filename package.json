@@ -10,7 +10,7 @@
   "author": "Karl Lam <karl.v.lam@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "dockerode": "2.5.3",
-    "aws-sdk": "2.162.0"
+    "dockerode": "3.2.0",
+    "aws-sdk": "2.706.0"
   }
 }
