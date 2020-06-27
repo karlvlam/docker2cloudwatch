@@ -7,9 +7,9 @@ log shipper from docker to cloudwatch
 
 
 # How to run
-1. set LOG__UNIQUE_ID as LogGroup name prefix
-1. set AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY as LogGroup name prefix
-2. run the script
+1. set LOG_GROUP as LogGroup name 
+2. set AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY for AWS access
+3. run the script
 
 
 ## Example
@@ -17,7 +17,7 @@ log shipper from docker to cloudwatch
 export AWS_ACCESS_KEY_ID=aws-access-key-id
 export AWS_SECRET_ACCESS_KEY=aws-secret-access-key
 export LOG_REGION=ap-northeast-1
-export LOG_UNIQUE_ID='myloggroup'
+export LOG_GROUP='myloggroup'
 node docker2cloudwatch
 ```
 ## Docker
