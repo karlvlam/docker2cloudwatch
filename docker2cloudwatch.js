@@ -16,6 +16,7 @@ const LOG_BATCH_SIZE = 500;
 
 const LOG_UNIQUE_ID= ENV['LOG_UNIQUE_ID'] || 'LOG_UNIQUE_ID';
 const LOG_GROUP = ENV['LOG_GROUP'] || 'LOG_GROUP';
+const LOG_STREAM_PREFIX = ENV['LOG_STREAM_PREFIX'] || '';
 const LOG_REGION= ENV['LOG_REGION'] || null;
 
 const AWS = require('aws-sdk');
@@ -59,7 +60,7 @@ async function newLogPool(id){
   let opt = {
     cwl: theCwl,
     group: group,
-    stream: stream,
+    stream: LOG_STREAM_PREFIX + stream,
   }
   let ls = new LogStream(opt);
 
