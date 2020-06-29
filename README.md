@@ -18,6 +18,7 @@ export AWS_ACCESS_KEY_ID=aws-access-key-id
 export AWS_SECRET_ACCESS_KEY=aws-secret-access-key
 export LOG_REGION=ap-northeast-1
 export LOG_GROUP='myloggroup'
+export LOG_STREAM_PREFIX='server1-'
 node docker2cloudwatch
 ```
 ## Docker
